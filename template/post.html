@@ -1,0 +1,65 @@
+{{define "publishpage"}}
+
+{{template "head"}}
+
+
+
+<div class="container main">
+    <form action="/post" method="POST" data-toggle="validator">
+        <div class="blog_item">
+            <div class="col-lg-4 col-md-6 hidden-sm hidden-xs sidebar">
+                <div class="sidebar-inner">
+                    <div class="content">
+                        <textarea data-ng-model="blog_item.excerpt" class="input-excerpt" name="excerpt" placeholder="Brief description" required></textarea>
+                    </div>
+                </div>
+                <div class="cut"></div>
+            </div>
+
+            <div ng-include='"partials/error.html"'></div>
+
+            <div class="content col-lg-8 col-md-6 col-sm-12 col-xs-12" data-ng-if="!$error">
+                <div class="inner-wrapper">
+                    <img  data-ng-if="!!blog_item.image"/>
+                    <img src="/images/image_placeholder.jpg" data-ng-if="!blog_item.image" id="img" />
+                    
+
+
+
+                    <div class="inner">
+                        <input type="text" name="title" class="input-title" placeholder="Title of your post" required/>
+                        <textarea class="input-content" name="content" placeholder="Your Content" required></textarea>
+
+                        <input type="text" class="input-image"  id="image-field" name="image" placeholder="Paste an image url"  onchange="previewFile()" required/>
+                        <hr data-ng-if="$dirty" />
+
+                        <input class="btn btn-success" type="submit" value="Invia"/>
+                        <button type="button" class="btn btn-danger" >Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+var imageLoader = document.getElementById('image-field');
+var imageField= document.getElementById('img')
+function previewFile(){
+    imageField.src=imageLoader.value
+    /*.on('load', function() {
+        if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+            alert('broken image!');
+        } else {
+            $("#something").append(img);
+        }
+    });*/
+}
+
+
+</script>
+
+
+{{template "footer"}}
+
+{{end}}

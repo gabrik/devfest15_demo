@@ -1,0 +1,23 @@
+﻿<div class="blog_item">
+    <div ng-include='"partials/sidebar.html"'></div>
+    <div ng-include='"partials/error.html"'></div>
+
+    <div class="content col-lg-8 col-md-6 col-sm-12 col-xs-12" data-ng-if="!$error">
+        <div class="inner-wrapper">
+            <img data-ng-src="{{blog_item.image}}" />
+            <div class="inner">
+                <h4 contenteditable="true"
+                    ng-model="blog_item.title"
+                    strip-br="true"
+                    strip-tags="true"
+                    select-non-editable="true"></h4>
+                <div contenteditable="true"
+                     ng-model="blog_item.content"
+                     select-non-editable="true"></div>
+                <hr data-ng-if="$dirty"/>
+                <button type="button" class="btn btn-success" data-ng-if="$dirty" data-ng-click="Update($event)">OK</button>
+                <button type="button" class="btn btn-danger" data-ng-if="$dirty" data-ng-click="Cancel($event)">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

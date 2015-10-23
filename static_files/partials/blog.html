@@ -1,0 +1,23 @@
+﻿<div class="row">
+    <div ng-include='"partials/sidebar.html"'></div>
+    <div ng-include='"partials/error.html"'></div>
+
+    <div class="blog-post col-lg-4 col-md-6 col-sm-12 col-xs-12" ng-repeat="post in blog" data-ng-if="!$error">
+        <div class="blog-post-inner">
+            <div class="media">
+                <div class="media-left">
+                    <a data-ng-href="/blog/{{post.id}}" class="image-preview">
+                        <img class="media-object" data-ng-src="{{post.image}}" alt="{{post.title}}">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <a data-ng-href="/blog/{{post.id}}">
+                        <h4 class="media-heading" data-ng-bind="post.title"></h4>
+                    </a>
+                    <div data-ng-bind="post.excerpt"></div>
+                </div>
+            </div>
+        </div>
+        <div class="cut"></div>
+    </div>
+</div>

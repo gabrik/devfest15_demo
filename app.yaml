@@ -1,0 +1,35 @@
+application: devfest-demo-1104
+version: 1-2
+runtime: go
+api_version: go1
+
+handlers:
+
+- url: /images
+  static_dir: static_files/images
+
+- url: /js
+  static_dir: static_files/js
+
+- url: /css
+  static_dir: static_files/css
+
+- url: /fonts
+  static_dir: static_files/fonts
+
+- url: /partials
+  static_dir: static_files/partials
+
+- url: /parts
+  static_dir: static_files/parts
+
+
+- url: /data
+  static_dir: static_files/data
+
+
+##### IMPORTANTE VA ALLA FINE  #####
+- url: /.*
+  script: _go_app
+
+## serve per settare il tipo di runtime da usare e eventuali handlers per oggetti statici, oltre a poter settare i permessi

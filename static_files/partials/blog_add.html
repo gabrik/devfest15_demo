@@ -1,0 +1,29 @@
+﻿<div class="blog_item">
+    <div class="col-lg-4 col-md-6 hidden-sm hidden-xs sidebar">
+        <div class="sidebar-inner">
+            <div class="content">
+                <textarea data-ng-model="blog_item.excerpt" class="input-excerpt" placeholder="Brief description"></textarea>
+            </div>
+        </div>
+        <div class="cut"></div>
+    </div>
+
+    <div ng-include='"partials/error.html"'></div>
+
+    <div class="content col-lg-8 col-md-6 col-sm-12 col-xs-12" data-ng-if="!$error">
+        <div class="inner-wrapper">
+            <img data-ng-src="{{blog_item.image}}" data-ng-if="!!blog_item.image"/>
+            <img src="/images/image_placeholder.jpg" data-ng-if="!blog_item.image" />
+            <input type="text" class="input-image"  data-ng-model="blog_item.image" placeholder="Paste an image url" />
+
+
+            <div class="inner">
+                <input type="text" data-ng-model="blog_item.title" class="input-title" placeholder="Title of your post"/>
+                <textarea data-ng-model="blog_item.content" class="input-content" placeholder="Your Content"></textarea>
+                <hr data-ng-if="$dirty" />
+                <button type="button" class="btn btn-success" data-ng-if="$dirty" data-ng-click="Add($event)">OK</button>
+                <button type="button" class="btn btn-danger" data-ng-if="$dirty" data-ng-click="Cancel($event)">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
