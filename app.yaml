@@ -32,4 +32,5 @@ handlers:
 - url: /.*
   script: _go_app
 
+
 ## serve per settare il tipo di runtime da usare e eventuali handlers per oggetti statici, oltre a poter settare i permessi

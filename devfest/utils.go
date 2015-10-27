@@ -1,36 +1,18 @@
 package devfest
 
 import (
-	"io/ioutil"
-	//"appengine/log"
+
 	"appengine"
+    "appengine/datastore"
+
 )
 
 
 
-func loadPage(title string, c appengine.Context) string {
-    filename := "/views/" + title + ".html"
-    body, err := ioutil.ReadFile(filename)
-    if err != nil {
-        c.Errorf("Failed to retrieve file: %v", err)
-        
-    }
 
+//genera la chiave per i post nel datastore
+func postKey(c appengine.Context) *datastore.Key {
 
-    header,err:= ioutil.ReadFile("/views/include/header.html")
-    if err != nil {
-        c.Errorf("Failed to retrieve file: %v", err)
-        
-    }
-
-    footer,err:=ioutil.ReadFile("/views/include/footer.html")
-    if err != nil {
-        c.Errorf("Failed to retrieve file: %v", err)
-    }
-
-
-    bodys:=string(header)+string(body)+string(footer)
-
-    return bodys
+    return datastore.NewKey(c, "Post", "default_post", 0, nil)
 }
 
